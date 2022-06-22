@@ -10,15 +10,14 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="manifest" href="manifest.webmanifest"> -->
     <!-- <script src="index.js" defer></script> -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 
 <header class="headbar">
     <button class="ubtn" class="add-button"><span class="material-symbols-outlined">download</span></button>
-    <img src="data/lba/logo.png" width="100px" alt="logo">
+    <img src="./data/lba/logo.png" width="100px" alt="logo">
     <button class="dnmode" onclick="myFunction()"><span id="dark"
-            class="material-symbols-outlined">dark_mode</span></button>
+            class="material-symbols-outlined"></span></button>
     <script>
         let element = document.body;
         if (document.cookie.split(';')[0].split("=")[1] == "dark_mode") {
@@ -27,6 +26,8 @@
         } else if (document.cookie.split(';')[0].split("=")[1] == "light_mode") {
             document.getElementById('dark').innerHTML = 'light_mode';
             element.classList.remove('dark-mode');
+        }else{
+            document.getElementById('dark').innerHTML = 'dark_mode';
         }
 
         function myFunction() {
@@ -46,17 +47,29 @@
 <body>
     <!-- FEED -->
     <section class="today" id="stoday">
-        PAGE 1
+        <?php require('feed.html'); ?>
     </section>
 
     <!-- RECHERCHE -->
     <section class="schedule" id="sschedule">
-        PAGE 2
+        <?php require('recherche.html'); ?>
     </section>
 
     <!-- PROFIL -->
     <section class="setting" id="ssetting">
-        PAGE 3
+        <?php
+            if(!isset($_SESSION['connecte'])){ 
+                echo "none"; 
+                require('feed.html'); 
+            }elseif($_SESSION['connecte']==True){
+                if($_SESSION['mode']=='comp'){
+                    require('profil_comp.html');
+                }
+                elseif($_SESSION['mode']=='user'){
+                    require('profil_user.html');
+                }
+            }
+        ?>
     </section>
 
 </body>
