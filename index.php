@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -21,13 +21,15 @@
     <script>
         let element = document.body;
         if (document.cookie.split(';')[0].split("=")[1] == "dark_mode") {
-            document.getElementById('dark').innerHTML = 'dark_mode';
+            document.getElementById('dark').innerHTML = 'light_mode';
             element.classList.add('dark-mode');
         } else if (document.cookie.split(';')[0].split("=")[1] == "light_mode") {
-            document.getElementById('dark').innerHTML = 'light_mode';
+            document.getElementById('dark').innerHTML = 'dark_mode';
             element.classList.remove('dark-mode');
         }else{
-            document.getElementById('dark').innerHTML = 'dark_mode';
+            document.getElementById('dark').innerHTML = 'light_mode';
+            element.classList.remove('dark-mode');
+
         }
 
         function myFunction() {
@@ -47,29 +49,30 @@
 <body>
     <!-- FEED -->
     <section class="today" id="stoday">
-        <?php require('feed.html'); ?>
+        <?php include('feed.php'); ?>
     </section>
 
     <!-- RECHERCHE -->
     <section class="schedule" id="sschedule">
-        <?php require('recherche.html'); ?>
+        <?php include('recherche.html'); ?>
     </section>
 
     <!-- PROFIL -->
     <section class="setting" id="ssetting">
         <?php
             if(!isset($_SESSION['connecte'])){ 
-                echo "none"; 
-                require('feed.html'); 
+                echo "message pour faire un compte"; 
+                
             }elseif($_SESSION['connecte']==True){
                 if($_SESSION['mode']=='comp'){
-                    require('profil_comp.html');
+                    include('profil_comp.html');
                 }
                 elseif($_SESSION['mode']=='user'){
-                    require('profil_user.html');
+                    include('profil_user.html');
                 }
             }
         ?>
+        <video src=""></video>
     </section>
 
 </body>
