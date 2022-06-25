@@ -1,11 +1,13 @@
-<button style="background-color:orange;border:none;border-radius:25px;color:white;width:50px;height:50px;font-size:40px;font-weight:bold;position:fixed;bottom:100px;right:20px"  class="material-symbols-outlined">add</button>
         <?php
         
             $co = False;
             if(isset($_SESSION['connecte'])){ 
-                session_start();
-                $username = $_SESSION["username"];
-                $co=True;
+                if($_SESSION['mode']=='comp'){
+                    session_start();
+                    $username = $_SESSION["username"];
+                    $co=True;
+                    echo "<button id='add_btn'  class='material-symbols-outlined'>add</button>";
+                }
             }
 
             require('cobdd.php');
@@ -25,7 +27,7 @@
             
             <div class="post">
                 <div class="postProfile">
-                    <img src="../data/<?= $poste["post_comp_id"] ?>/profilimg.png" alt="img-de-profil" />
+                    <img src="data/comp/<?= $poste["post_comp_id"] ?>/profilimg.png" alt="img-de-profil" />
                 </div>
                 
                 <div class="postBody">
@@ -47,8 +49,9 @@
 
                     <div class="postFooter">
                     <?php if($co){if($poste['post_comp_id']===$username){ ?><form method="post"><input type="hidden" name="idd" value="<?= $poste["id"] ?>"> <button style="background-color:transparent; border:none"  name='deld' type="submit" class="material-symbols-outlined"> delete </button> <?php } } ?>
-                    <form method="post"><button type="submit" name="share" style="background-color:transparent; border:none" class="material-symbols-outlined"> share </button>       </form>                   
-                    </div>
+                    <form method="post"><button type="submit" name="share" style="background-color:transparent; border:none;color:orange" class="material-symbols-outlined"> share </button>       </form>                   
+                    <?= $poste["post_date"] ?>    
+                </div>
                 </div>
             </div>
             <?php  
