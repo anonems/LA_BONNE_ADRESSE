@@ -1,26 +1,39 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil artisan</title>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-</head>
-<body>
-    <!-- Logo -->
-    <img class=Logo src="data/la_bonne_adresse.png" alt="Logo La Bonne Adresse">
+<?php
+$co_comp ;
+if(!isset($_SESSION['connecte'])){ 
+    $co_comp=false;
+}elseif($_SESSION['connecte']==True){
+    if ($_SESSION['methode']=="comp"){
+        $co_comp=true;
 
-    <div id="profil_artisan">
-        <div id="pdp"></div>
-        <text id="name">Nom boutique</text>
-        <h3>Description</h3>
-        <text id="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</text>
-        <h3>Site internet</h3>
-        <text id="site_internet">site_internet.com</text>
-        <h3>Adresse</h3>
-        <text id="adresse">123 adresse, Paris</text>
+    }
+}
+?>
+<link rel="stylesheet" href="css/style.css">
+<div class="cp" >
+    <span style="display:flex; align-items:center">
+        <img class="profil__img" src="https://cdn.pixabay.com/photo/2019/02/12/07/39/profile-picture-3991604_1280.jpg" alt="image_entreprise">
+        <b style=" font-size:20px; margin-left:10px">Leblanc Légumes</b>
+    </span>
+
+        <h3 class="profil__subtitle">Description</h3>
+    <p class="profil__description">Vente de fruits et légumes en tout 
+        genre</p>
+    <h3 class="profil__subtitle">Site internet</h3>
+    <p class="profil__description">leblanclegumes.fr</p>
+    <h3 class="profil__subtitle">Adresse</h3>
+    <p class="profil__description">89 Impasse LeDuc, Paris</p>
+    <?php if($co_comp==true ){ ?>
+        <center><button class="button button--flex">
+        AJOUTER UNE<br>NOUVELLE PUBLICATION
+    </button></center>
+        <?php
+    }?>
+  
+
+    <hr>
+
+    <h3 class="profil__subtitle">Posts récents</h3>
+    <img class="feed__img" src="https://cdn.pixabay.com/photo/2022/06/22/10/47/cheetah-7277665_1280.jpg" alt="image_entreprise__feed">
     </div>
-    <div id="post_recents">Posts récents</div>
-</body>
-</html>
+</div>

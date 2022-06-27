@@ -61,14 +61,14 @@
     <section class="setting" id="ssetting">
         <?php
             if(!isset($_SESSION['connecte'])){ 
-                echo "message pour faire un compte"; 
-                
+                include('profil_comp.php');
+
             }elseif($_SESSION['connecte']==True){
                 if($_SESSION['mode']=='comp'){
-                    include('profil_comp.html');
+                    include('profil_comp.php');
                 }
                 elseif($_SESSION['mode']=='user'){
-                    include('profil_user.html');
+                    include('profil_user.php');
                 }
             }
         ?>

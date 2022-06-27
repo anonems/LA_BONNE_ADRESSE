@@ -16,7 +16,6 @@
 
             if ($postes){
             foreach($postes as $poste): 
-                
                     $maRequete1 = $pdo->prepare("SELECT * FROM comp_infos WHERE comp_id=:userp ");
                     $maRequete1->execute(['userp'=> $poste["post_comp_id"]]);
                     $postes1 = $maRequete1->fetch();
