@@ -8,6 +8,8 @@ body{
   --colorone: #4EA5D9;
   --colortwo: #133C53;
   overflow: auto;
+  --accolor : orange;
+  
 
 }
 
@@ -238,6 +240,8 @@ padding: 50px;
 .postProfile img{
   border-radius: 50%;
   height: 40px;
+  box-shadow: var(--accolor) 0px 1px 4px, var(--accolor) 0px 0px 0px 3px;
+
 }
 
 .postBody{
@@ -254,8 +258,8 @@ padding: 50px;
 .pseudo{
   font-size: 14px;
   font-weight: bold;
-  color: #761797;
   margin-left: 5px;
+  color:var(--accolor);
 }
 
 .postUsername h3{
@@ -276,7 +280,7 @@ padding: 50px;
   margin-right: 100px;
 }
 
-#add_btn{
+#add_btn2{
   background-color:orange;
   border:none;
   border-radius:25px;
@@ -289,9 +293,209 @@ padding: 50px;
   bottom:100px;
   right:20px;
 }
-#add_btn:hover{
-  background-color: transparent;
-  color:orange;
-  border-color: orange;
+#add_btn2:hover{
+  background-color:white;
+  color: orange;
+}
+#share_btn{
+  background-color:transparent;
+  border:none;
+  color:var(--accolor);
+
+}
+#share_btn:hover{
+  color:blue;
 }
 
+@media (min-width: 640px) {
+
+  #logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  input[type="search"] {
+      box-sizing: border-box;
+      position: absolute;
+      width: 291px;
+      height: 27px;
+      left: 50%;
+      transform: translate(-50%);
+
+      background: #E1E1E1;
+      border: 1px solid #EC662B;
+      border-radius: 26px;
+  }
+  
+  #distance {
+      left: 30%;
+  }
+  
+  #theme {
+      left: 50%;
+  }
+  
+  #menu a { 
+    display:block; 
+    color: #000; 
+  }
+  
+  #menu > li,
+  #menu > li li {
+    position: relative;
+    display:inline-block;
+    width: 81px;
+    height:20px;
+    padding: 6px 15px;
+    background-color: #e1e1e1;
+    border: 1px solid #EC662B;
+    top: 35px;
+    border-radius: 26px;
+  }
+  
+  #menu > li li a { 
+      color: #000; 
+  }
+  
+  #menu > li li:hover { 
+      background:#EC662B; 
+  }
+  
+  #menu > li:first-child {
+    border-right: 1px solid #EC662B;
+  }
+      
+  #menu > li:last-child {
+    border-left: 1px solid #EC662B;
+  
+  }
+  
+  #menu ul {
+    position: absolute;
+    top: 0; left: 0;
+    max-height:0em;	
+    padding: 0;
+    overflow: hidden;
+    
+  }
+  
+  #menu > li:hover ul {
+  
+    max-height: 50em;
+  }
+  
+  #trait_dessus {
+      border-top: 1px solid #000;
+      width : 100%;
+      top: 25px;
+      position: relative;
+  
+  }
+  
+  #trait_bas {
+      border-top: 1px solid #000;
+      width : 100%;
+      top: 45px;
+      position: relative;
+  
+  }}
+  
+  @media (max-width: 640px) {
+  
+  body{
+      font-family: 'Comfortaa';
+  }
+  
+  #logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  input[type="search"] {
+      box-sizing: border-box;
+  
+      position: absolute;
+      width: 291px;
+      height: 27px;
+      left: 10%;
+  
+      background: #E1E1E1;
+      border: 1px solid #EC662B;
+      border-radius: 26px;
+  }
+  
+  #distance {
+      left: 2%;
+  }
+  
+  #theme {
+      left: 12%;
+  }
+  
+  #menu a { 
+      display:block; 
+      color: #000; 
+  }
+  
+  #menu > li,
+  #menu > li li {
+      position: relative;
+      display:inline-block;
+      width: 81px;
+      height:20px;
+      padding: 6px 15px;
+      background-color: #e1e1e1;
+      border: 1px solid #EC662B;
+      top: 35px;
+      border-radius: 26px;
+  }
+  
+  #menu > li li a { 
+      color: #000; 
+  }
+  
+  #menu > li li:hover { 
+      background:#EC662B; 
+  }
+  
+  #menu > li:first-child {
+      border-right: 1px solid #EC662B;
+  }
+      
+  #menu > li:last-child {
+      border-left: 1px solid #EC662B;
+  
+  }
+  
+  #menu ul {
+      position: absolute;
+      top: 0; left: 0;
+      max-height:0em;	
+      padding: 0;
+      overflow: hidden;
+      
+  }
+  
+  #menu > li:hover ul {
+  
+      max-height: 50em;
+  }
+  
+  #trait_dessus {
+      border-top: 1px solid #000;
+      width : 100%;
+      top: 25px;
+      position: relative;
+  
+  }
+  
+  #trait_bas {
+      border-top: 1px solid #000;
+      width : 100%;
+      top: 45px;
+      position: relative;
+  
+  }}
+  

@@ -54,7 +54,7 @@
 
     <!-- RECHERCHE -->
     <section class="schedule" id="sschedule">
-        <?php include('recherche.html'); ?>
+        <?php include('recherche.php'); ?>
     </section>
 
     <!-- PROFIL -->

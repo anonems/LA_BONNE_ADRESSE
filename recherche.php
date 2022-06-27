@@ -9,8 +9,23 @@
 </head>
 <body>
     <!-- Logo -->
-    <img class=Logo src="data/logo.png" alt="Logo La Bonne Adresse">
+    <input type="search" id="searchbar" placeholder="Recherche"><br>
+    <div id="trait_dessus"></div>
+    <ul id="menu">
+        <li id="distance"><a>Distance</a>
+            <ul>
+                <li><a value="0-100m">0-100m</a></li>
+                <li><a value="100-300m">100-300m</a></li>
+                <li><a value ="300-500m">300-500m</a></li>
+            </ul>
+        </li>  
+        <li id="theme"><a>Theme</a>
+            <ul>
+                <li><a value="degustation">Degustation</a></li>
+                <li><a value="promotion">Promotion</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div id="trait_bas"></div>
 </body>
-
-
 </html>
