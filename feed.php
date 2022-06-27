@@ -35,7 +35,7 @@
                         <div class="postUsername">
                             <h3> 
                             <?= $postes1["comp_name"] ?>
-                            <a href="profil.php?user=<?=$poste['post_comp_id']?>"><span class="pseudo">@<?= $poste["post_comp_id"] ?></span></a>
+                            <a href="profil_comp.php?user=<?=$poste['post_comp_id']?>"><span class="pseudo">@<?= $poste["post_comp_id"] ?></span></a>
                             </h3>
                         </div>
                         <div class="postDescription">
