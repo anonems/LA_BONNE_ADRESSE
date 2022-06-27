@@ -1,0 +1,100 @@
+.Logo_connexion{
+    position: absolute;
+    width: 210px;
+    height: 68px;
+    left: 95px;
+    top: 175px;
+
+}
+.Title_connection{
+    position: absolute;
+    width: 110px;
+    height: 50px;
+    left: 125px;
+    top: 285px;
+
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 100%;
+    /* identical to box height, or 16px */
+
+    text-align: center;
+
+    color: #000000;
+}
+.Connexion_categorie_button{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 336px;
+    height: 267px;
+    left: 26px;
+    top: 405px;
+    
+    border: 2px solid #EC662B;
+    border-radius: 15px;
+}
+.You_are{
+    position: absolute;
+    width: 79px;
+    height: 14px;
+    left: 10px;
+    top: 20px;
+
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    /* identical to box height, or 14px */
+
+    text-align: center;
+
+    color: #000000;
+
+}
+
+.Button_Consum{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 183px;
+    height: 43px;
+    left: -20px;
+    top: 75px;
+    
+    border: 4px solid #EC662B;
+    border-radius: 25px;    margin-left: 30%;
+}
+.Button_Artisan{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 183px;
+    height: 43px;
+    left: 80px;
+    top: 150px;
+
+    border: 4px solid #EC662B;
+    border-radius: 25px;
+}
+.Button_Nothing{
+    position: absolute;
+    width: 231px;
+    height: 14px;
+    left: 20px;
+    top: 706px;
+
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    /* identical to box height, or 14px */
+
+    text-align: center;
+
+    color: #000000;
+}
