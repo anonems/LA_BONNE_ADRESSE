@@ -61,8 +61,7 @@
     <section class="setting" id="ssetting">
         <?php
             if(!isset($_SESSION['connecte'])){ 
-                include('profil_comp.php');
-
+                include('login.php');
             }elseif($_SESSION['connecte']==True){
                 if($_SESSION['mode']=='comp'){
                     include('profil_comp.php');
