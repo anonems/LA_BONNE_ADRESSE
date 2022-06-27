@@ -25,7 +25,7 @@
                 <div class="postProfile">
                     <img src="data/comp/<?= $poste["post_comp_id"] ?>/profilimg.png" alt="img-de-profil" />
                 </div>
-                
+
                 <div class="postBody">
                     <div class="postHeader">
                         <div class="postUsername">
@@ -39,7 +39,7 @@
                     </div>
 
                     <?php if (isset($poste["post_img"])){?>
-                    <img src="<?=$poste["post_img"]?>" alt="" > 
+                    <img style="max-width:400px" src="<?=$poste["post_img"]?>" alt="" > 
                     <?php } ?>
 
                     <div class="postFooter">
