@@ -21,7 +21,7 @@
                     $postes1 = $maRequete1->fetch();
             ?>
             <script>changecoloracc(<?=$postes1["comp_categ"]?>)</script>
-            <div class="post">
+            <div class="post"  >
                 <div class="postProfile">
                     <img src="data/comp/<?= $poste["post_comp_id"] ?>/profilimg.png" alt="img-de-profil" />
                 </div>
@@ -33,14 +33,19 @@
                             <a style="text-decoration:none;" href="profil_comp.php?user=<?=$poste['post_comp_id']?>"><span class="pseudo"  ><?= $postes1["comp_name"] ?></span></a>
                             </h3>
                         </div>
+
+                    <?php if (isset($poste["post_img"])){?>
+                    <img class="imgfeed" src="<?=$poste["post_img"]?>" alt="" > 
+                    <?php } ?>
+
                         <div class="postDescription">
+                        <h2 style="color:orange"><?=$poste["post_tag"]?></h2>
+
                             <p><?= $poste["post_content"] ?></p>
                         </div>
                     </div>
 
-                    <?php if (isset($poste["post_img"])){?>
-                    <img style="max-width:400px" src="<?=$poste["post_img"]?>" alt="" > 
-                    <?php } ?>
+                    
 
                     <div class="postFooter">
                     <?php if($co){if($poste['post_comp_id']===$username){ ?><form method="post"><input type="hidden" name="idd" value="<?= $poste["id"] ?>"> <button style="background-color:transparent; border:none"  name='deld' type="submit" class="material-symbols-outlined"> delete </button> <?php } } ?>

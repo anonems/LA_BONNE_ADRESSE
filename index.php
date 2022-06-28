@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -93,9 +94,14 @@
         let s2 = document.getElementById("sschedule");
         let s3 = document.getElementById("ssetting");
         bt1.style.boxShadow = "0px -5px 0px 0px orange"
+        bt1.style.color = "orange"
+
         bt1.addEventListener("click", () => {
             s1.style.display = "block";
             bt1.style.boxShadow = "0px -5px 0px 0px orange"
+            bt1.style.color = "orange"
+            bt2.style.color = "white"
+            bt3.style.color = "white"
             bt2.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
             bt3.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
             s2.style.display = "none";
@@ -105,6 +111,9 @@
         bt2.addEventListener("click", () => {
             s2.style.display = "block";
             bt2.style.boxShadow = "0px -5px 0px 0px orange"
+            bt2.style.color = "orange"
+            bt3.style.color = "white"
+            bt1.style.color = "white"
             bt3.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
             bt1.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
             s1.style.display = "none";
@@ -115,6 +124,9 @@
         bt3.addEventListener("click", () => {
             s3.style.display = "block";
             bt3.style.boxShadow = "0px -5px 0px 0px orange"
+            bt3.style.color = "orange"
+            bt2.style.color = "white"
+            bt1.style.color = "white"
             bt2.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
             bt1.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
             s2.style.display = "none";
