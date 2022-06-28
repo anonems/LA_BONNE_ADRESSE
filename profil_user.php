@@ -137,7 +137,7 @@ if(!isset($_SESSION['connecte'])){
                 <input type="text" name="ad_city" class="Input_log" id="Input_mail" placeholder="Montreuil" required>
                 <h3 id="Log_mail" class="Categorie_log">Category</h3>
                 <select class="Input_log" name="comp_categ">
-                    <option value="">faire un chois</option>
+                    <option value="">faire un choix</option>
                     <option value="epicerie">épicerie</option>
                     <option value="charcuterie">Charcuterie</option>
                     <option value="brasserie">brasserie</option>
