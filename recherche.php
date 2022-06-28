@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost; dbname=lba;','root','root');
+$bdd = new PDO('mysql:host=localhost; dbname=lba;','root','');
 $allmembers = $bdd->prepare('SELECT * FROM comp_infos ORDER BY comp_id DESC');
 if(isset($_GET['research']) AND !empty($_GET['research'])){
     $search = htmlspecialchars($_GET['research']);    

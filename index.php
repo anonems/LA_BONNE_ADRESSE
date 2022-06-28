@@ -90,6 +90,7 @@
         let bt1 = document.getElementById("today");
         let bt2 = document.getElementById("schedule");
         let bt3 = document.getElementById("setting");
+        let bt4 = document.getElementById("add_btn2");
         let s1 = document.getElementById("stoday");
         let s2 = document.getElementById("sschedule");
         let s3 = document.getElementById("ssetting");
@@ -122,6 +123,18 @@
 
         })
         bt3.addEventListener("click", () => {
+            s3.style.display = "block";
+            bt3.style.boxShadow = "0px -5px 0px 0px orange"
+            bt3.style.color = "orange"
+            bt2.style.color = "white"
+            bt1.style.color = "white"
+            bt2.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
+            bt1.style.boxShadow = "0px -5px 0px 0px var(--colortwo)"
+            s2.style.display = "none";
+            s1.style.display = "none";
+            s3.style.animation = "moveToRight 0.5s ease-in-out"
+        })
+        bt4.addEventListener("click", () => {
             s3.style.display = "block";
             bt3.style.boxShadow = "0px -5px 0px 0px orange"
             bt3.style.color = "orange"

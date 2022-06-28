@@ -4,7 +4,7 @@
                 if($_SESSION['mode']=='comp'){
                     $username = $_SESSION["username"];
                     $co=True;
-                    echo "<button id='add_btn2'  class='material-symbols-outlined'>add</button>";
+                    echo "<button id='add_btn2'   class='material-symbols-outlined'>add</button>";
                 }
             }
 
