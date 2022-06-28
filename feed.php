@@ -29,7 +29,7 @@
                     <div class="postHeader">
                         <div class="postUsername">
                             <h3> 
-                            <a style="text-decoration:none;" href="profil_comp.php?user=<?=$poste['post_comp_id']?>"><span class="pseudo"  ><?= $postes1["comp_name"] ?></span></a>
+                            <a style="text-decoration:none;" href="profil_comp.php?user=<?=$poste['post_comp_id']?>"><span class="pseudo" ><?= $postes1["comp_name"] ?></span></a>
                             </h3>
                         </div>
 
