@@ -698,80 +698,62 @@ padding: 50px;
     margin: 20px 20px;
 }
 
-
-
 .pdp3{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #6F8695;
-    margin: 20px 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #6F8695;
+  margin: 20px 20px;
 }
 
 /* login */
 .log_div_class{
-  position: absolute;
-  top:50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  display: grid;
   justify-content: center;
-
 }
 
-.Logo_connexion{
-  position: absolute;
-  width: 120px;
-  left: 30%;
-  top: 5%;
-}
 .Title_connection_Artisan{
-  position: absolute;
   width: 110px;
   height: 16px;
-  left: 80px;
-  top: 125px;
 }
 
 .Categorie_log{
-  position: absolute;
   width: 150px;
   height: 12px;
-  left: 34px;
 }
-#Log_mail{
-  top: 220px;
-}
-#Log_Pw{
-  top: 350px;
-}
-.Input_log{
-  box-sizing: border-box;
 
-  position: absolute;
+.Input_log{
   width: 250px;
   height: 37px;
-  left: 36px;
-  
-  
   background: #E1E1E1;
   border: 1px solid #EC662B;
   border-radius: 25px;
 }
-#Input_mail{
-  top: 285px;
-}
-#Input_pw{
-  top: 414px;
-}
+
 .Validation_connexion_Artisan{
-  position: absolute;
   width: 127px;
   height: 37px;
-  left: 100px;
-  top: 500px;
-
+  margin-top: 30px;
+  border:none;
+  color:white;
+  font-weight: bold;
   background: #EC662B;
   border-radius: 25px;
+}
+.Validation_connexion_Artisan2{
+  margin-top: 30px;
+  width: 127px;
+  height: 37px;
+  border:none;
+  color:white;
+  font-weight: bold;
+  background: #EC662B;
+  border-radius: 25px;
+}
+.Validation_connexion_Artisan:hover, .Validation_connexion_Artisan2:hover {
+  color:#EC662B;
+  border: 1px solid #EC662B;
+  background-color: transparent;
 }
 .Come_back_Artisan{
   margin-top: 140px;
