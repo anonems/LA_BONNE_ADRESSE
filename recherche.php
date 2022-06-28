@@ -31,9 +31,9 @@ if(isset($_GET['research']) AND !empty($_GET['research'])){
                 <li><a value ="300-500m">300-500m</a></li>
             </ul>
         </li>  
-        <li id="theme"><a>Theme</a>
+        <li id="theme"><a>Thème</a>
             <ul>
-                <li><a value="degustation">Degustation</a></li>
+                <li><a value="degustation">Dégustation</a></li>
                 <li><a value="promotion">Promotion</a></li>
                 <li><a value="promotion">Promotion</a></li>
             </ul>
