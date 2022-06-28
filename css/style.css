@@ -307,6 +307,7 @@ padding: 50px;
 }
 
 #add_btn2{
+  z-index: 1;
   background-color:orange;
   border:none;
   border-radius:25px;
@@ -532,17 +533,7 @@ padding: 50px;
     justify-content: center;
   }
   
-  .button{
-    display: inline-block;
-    background-color: #EC662B;
-    color: #FFF;
-    padding: 1rem;
-    border-radius: 5rem;
-  }
-  
-  .button:hover{
-    background-color: #cd4911;
-  }
+
   
   .profil__img{
     width: 150px;

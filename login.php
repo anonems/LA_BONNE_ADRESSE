@@ -13,17 +13,17 @@ if(($_SERVER["REQUEST_METHOD"] == "POST")){
         $log = $maRequete->fetch();
         if (($log['user_email'] == $username && (password_verify($pwd, $log['user_pwd'])) )){
             $_SESSION["connecte"] = true;
-            $_SESSION["methode"] = "user";
+            $_SESSION["mode"] = "user";
             $_SESSION["username"] = $log['user_id'];
             http_response_code(302);
-            include("profil_user.php");
+            //header("Location : index.php?user_id=".$log['user_id']);
             exit();
         }elseif($log['comp_email'] == $username && (password_verify($pwd, $log['comp_pwd']))){
             $_SESSION["connecte"] = true;
-            $_SESSION["methode"] = "comp";
+            $_SESSION["mode"] = "comp";
             $_SESSION["username"] = $log['comp_id'];
             http_response_code(302);
-            include("profil_comp.php");
+            //include("profil_comp.php?comp_id=".$log['user_id']);
             exit();
         }elseif(($log['user_email'] == $username or $log['comp_email'] == $username)){
                 echo "<span style='color:red'>mot de passe incorrect ";

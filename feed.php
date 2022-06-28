@@ -2,10 +2,9 @@
             $co = False;
             if(isset($_SESSION['connecte'])){ 
                 if($_SESSION['mode']=='comp'){
-                    session_start();
                     $username = $_SESSION["username"];
                     $co=True;
-                    echo "<button id='add_btn_2'  class='material-symbols-outlined'>add</button>";
+                    echo "<button id='add_btn2'  class='material-symbols-outlined'>add</button>";
                 }
             }
 
