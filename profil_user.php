@@ -32,7 +32,6 @@ if(!isset($_SESSION['connecte'])){
             if (!$verifuse){
                 $nb_id = $pdo->prepare("SELECT COUNT(comp_id) FROM comp_infos");
                 $nb_id->execute();
-                $nb_idd = $nb_id->fetch(); 
                 $maRequete = $pdo->prepare("INSERT INTO comp_infos (comp_name,comp_email,comp_phone,comp_website,comp_desc,comp_adress_nb,comp_adress_ext,comp_adress_name,comp_adress_cp,comp_adress_city,comp_pwd,comp_categ) VALUES (:title,:username,:phone,:website,:descr,:ad_nb,:ad_ext,:ad_lb,:ad_cp,:ad_city,:pwd,:comp_categ) ");
                 $maRequete->execute(array(
                     'title' => $title,
@@ -48,7 +47,7 @@ if(!isset($_SESSION['connecte'])){
                     'username' => $username,
                     'pwd' => $pwd_hash        
                 ));
-                mkdir('data/comp/'.$nb_idd.'');
+                mkdir('data/comp/'.$nb_id.'');
             }elseif($verifuse){
                 echo "<span style='color:red'>Cette email est déja disponnible veuillez en utiliser un autre.</span>";
             }

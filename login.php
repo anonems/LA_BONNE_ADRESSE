@@ -11,7 +11,7 @@ if(($_SERVER["REQUEST_METHOD"] == "POST")){
         ]);
         $maRequete->setFetchMode(PDO::FETCH_ASSOC);
         $log = $maRequete->fetch();
-        if (($log['user_email'] == $username && (password_verify($pwd, $log['user_pwd'])) )){
+        if ((($log['user_email'] == $username or $log['user_pseudo'] == $username) && (password_verify($pwd, $log['user_pwd']))  )){
             $_SESSION["connecte"] = true;
             $_SESSION["mode"] = "user";
             $_SESSION["username"] = $log['user_id'];
@@ -25,7 +25,7 @@ if(($_SERVER["REQUEST_METHOD"] == "POST")){
             http_response_code(302);
             //include("profil_comp.php?comp_id=".$log['user_id']);
             exit();
-        }elseif(($log['user_email'] == $username or $log['comp_email'] == $username)){
+        }elseif(($log['user_email'] == $username or $log['comp_email'] == $username or $log['user_pseudo'] == $username)){
                 echo "<span style='color:red'>mot de passe incorrect ";
         }else{
                 echo "<span style='color:red'>identifiant indisponible</span> ";
@@ -59,7 +59,7 @@ if(($_SERVER["REQUEST_METHOD"] == "POST")){
                 <h1 class="Title_connection_Artisan">Connexion</h1>
                 <form  method="post">
                 <h3 class="Categorie_log">Adresse mail</h3>
-                <input type="email" name="username" class="Input_log" placeholder="email@lba.fr" required>
+                <input type="text" name="username" class="Input_log" placeholder="email@lba.fr" required>
                 <h3   class="Categorie_log" >Mots de passe</h3>
                 <input type="password" name="pwd" class="Input_log"  placeholder="********" required><br>
                 <button type="submit" name="content_log" class="Validation_connexion_Artisan" >Valider</button>

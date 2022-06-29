@@ -20,22 +20,47 @@ if(isset($_GET['research']) AND !empty($_GET['research'])){
 <body>
     <!-- Logo -->
     <form method="GET">
-    <input type="search" name="research" id="searchbar" placeholder="Recherche"><br>
+    <input type="search" id="searchbar" placeholder="Recherche"><br>
     <div id="trait_dessus"></div>
     <ul id="menu">
         <li id="distance"><a>Distance</a>
             <ul>
-                <li><a value="0-100m">0-100m</a></li>
-                <li><a value="100-300m">100-300m</a></li>
-                <li><a value ="300-500m">300-500m</a></li>
-                <li><a value ="300-500m">300-500m</a></li>
+                <li>
+                    <a href="recherche?=e.php">
+                       <div>
+                           <button type="button" class="boutton_recherche">0-100m</button>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a value="100-300m">
+                        <div>
+                           <button type="button" class="boutton_recherche">100-300m</button>
+                        </div>
+                    </a>
+                </li>
+                <li><a value ="300-500m">
+                        <div>
+                           <button type="button" class="boutton_recherche">300-500m</button>
+                        </div>
+                    </a>
+                </li>
             </ul>
         </li>  
-        <li id="theme"><a>Thème</a>
+        <li id="theme"><a>Theme</a>
             <ul>
-                <li><a value="degustation">Dégustation</a></li>
-                <li><a value="promotion">Promotion</a></li>
-                <li><a value="promotion">Promotion</a></li>
+                <li><a value="degustation">
+                        <div>
+                           <button type="button" class="boutton_recherche">Degustation</button>
+                        </div>
+                    </a>
+                </li>
+                <li><a value="promotion">
+                        <div>
+                           <button type="button" class="boutton_recherche">Promotion</button>
+                        </div>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>
