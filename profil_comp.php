@@ -179,7 +179,7 @@ if(!isset($_SESSION['connecte'])){
                     
 
                     <div class="postFooter">
-                    <?php if($co){if($poste['post_comp_id']===$_SESSION['username']){ ?><form method="post"><input type="hidden" name="idd" value="<?= $poste["id"] ?>"> <button style="background-color:transparent; border:none"  name='deld' type="submit" class="material-symbols-outlined"> delete </button> <?php } } ?>
+                    <?php if($co){ ?><form method="post"><input type="hidden" name="idd" value="<?= $poste["post_id"] ?>"> <button style="background-color:transparent; border:none"  name='deld' type="submit" class="material-symbols-outlined"> delete </button></form> <?php } ?>
                     <button onclick="fcopy('<?=$poste['post_img']?>')" id="share_btn" class="material-symbols-outlined"> share </button>                  
                     <?= $poste["post_date"] ?>    
                 </div>
@@ -194,6 +194,14 @@ if(!isset($_SESSION['connecte'])){
             <?php  
                     };
             endforeach;    
+            if(isset($_POST['deld'])){
+                $idc = filter_input(INPUT_POST,'idd');
+                $maRequete6 = $pdo->prepare("DELETE FROM post_infos WHERE post_id=:id_post");
+                $maRequete6->execute([
+                'id_post' => $idc]
+            );
+            
+            }
             }else{echo 'aucun post';}
         ?>    
 </div>
