@@ -19,7 +19,6 @@
                     $maRequete1->execute(['userp'=> $poste["post_comp_id"]]);
                     $postes1 = $maRequete1->fetch();
             ?>
-            <script>changecoloracc(<?=$postes1["comp_categ"]?>)</script>
             <div class="post"  >
                 <div class="postProfile">
                     <img src="data/comp/<?= $poste["post_comp_id"] ?>/profilimg.png" alt="img-de-profil" />

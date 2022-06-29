@@ -1,5 +1,9 @@
 
+
 <?php
+try{
+ 
+
 require('cobdd.php');
 if(($_SERVER["REQUEST_METHOD"] == "POST")){
     if(isset($_POST['content_log'])) {
@@ -73,11 +77,11 @@ if(($_SERVER["REQUEST_METHOD"] == "POST")){
                 <h1 class="Title_connection_Artisan">inscription</h1>
                 <form  method="post">
                 <h3 id="Log_mail" class="Categorie_log">Pseudo</h3>
-                <input type="text" name="pseudo" class="Input_log" id="Input_mail" placeholder="Pseudo" required>
+                <input type="text" name="pseudo" class="Input_log"  placeholder="Pseudo" required>
                 <h3 id="Log_mail" class="Categorie_log">Adresse mail</h3>
-                <input type="email" name="username" class="Input_log" id="Input_mail" placeholder="email@lba.fr" required>
+                <input type="email" name="username" class="Input_log"  placeholder="email@lba.fr" required>
                 <h3  id="Log_Pw" class="Categorie_log" >Mots de passe</h3>
-                <input type="password" name="pwd" class="Input_log" id="Input_pw" placeholder="********" required><br>
+                <input type="password" name="pwd" class="Input_log"  placeholder="********" required><br>
                 <button type="submit" name="content_sig" class="Validation_connexion_Artisan" >Valider</button>
     </form>
     <button id="login" type="submit" name="content_log" class="Validation_connexion_Artisan2" >login</button>
@@ -99,3 +103,4 @@ if(($_SERVER["REQUEST_METHOD"] == "POST")){
             document.getElementById("log_div_class").style.display = "block";
         })
 </script>
+<?php }catch(Exception $e){} ?>

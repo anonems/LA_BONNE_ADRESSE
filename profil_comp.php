@@ -5,7 +5,6 @@ if(!isset($_SESSION['connecte'])){
 }elseif($_SESSION['connecte']==True){
     if ($_SESSION['mode']=="comp"){
         $co_comp=true;
-
     }
  }
     $maRequete2 = $pdo->prepare("SELECT * FROM comp_infos WHERE comp_id = :id_user ");
@@ -37,7 +36,8 @@ if(!isset($_SESSION['connecte'])){
         $comp_categ = filter_input(INPUT_POST, "comp_categ");
         $pwd = filter_input(INPUT_POST, "pwd");
         $pwd_hash =  password_hash($pwd, PASSWORD_DEFAULT);
-        
+
+
         $maRequete2 = $pdo->prepare("SELECT user_email,comp_email FROM user_infos,comp_infos WHERE user_infos.user_email = :id_user OR comp_infos.comp_email = :id_user ");
         $maRequete2->execute(['id_user' => $username]);
         $verifuse = $maRequete2->fetch(); 
@@ -60,6 +60,54 @@ if(!isset($_SESSION['connecte'])){
                 'username' => $username,
                 'pwd' => $pwd_hash        
             ));
+        }
+    }
+    else if(($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['hello2']))) {
+        ini_set('file_uploads','On');
+        $target_dir = "data/comp/".$_SESSION['username']."/";
+        $target_file = $target_dir . basename($_FILES["profilimg"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $newimgname = $target_dir."profilimg.".$imageFileType;
+        // Check if image file is a actual image or fake image
+        if(isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["profilimg"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+        }
+        // Check if file already exists
+        if (file_exists($newimgname)) {
+            unlink( $newimgname ) ;
+            //echo "Sorry, file already exists.";
+            //$uploadOk = 0;
+        }
+        // Check file size
+        if ($_FILES["profilimg"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["profilimg"]["tmp_name"], $newimgname)) {
+                header('Location: hello3.php');    
+            //echo "The file ". htmlspecialchars( basename( $_FILES["profilimg"]["name"])). " has been uploaded.";
+            } else {
+            echo "Sorry, there was an error uploading your file.";
+            }
         }
     }
 ?>
@@ -158,9 +206,9 @@ if(!isset($_SESSION['connecte'])){
                 <h1 class="Title_connection_Artisan">Nouveau Post</h1>
                 <form  method="post">
                 <h3 id="Log_mail" class="Categorie_log">Description</h3>
-                <input type="text" name="post_desc" class="Input_log" id="Input_mail" placeholder="Ceci est un poste" required>
+                <input type="text" name="post_desc" class="Input_log"  placeholder="Ceci est un poste" required>
                 <h3 id="Log_mail" class="Categorie_log">Image</h3>
-                <input type="url" name="post_img" class="Input_log" id="Input_mail" placeholder="image.png" required>
+                <input type="url" name="post_img" class="Input_log" placeholder="image.png" required>
                 <h3  id="Log_Pw" class="Categorie_log" >Thème</h3>
                 <select class="Input_log" name="post_categ" required>
                     <option value="">faire un choix</option>
@@ -176,27 +224,34 @@ if(!isset($_SESSION['connecte'])){
 <section id="mpfs">
 <div class="log_div_class"  >
                 <h1 class="Title_connection_Artisan">Edit profil</h1>
+
+                <form method="post">
+                <h3 id="Log_mail" class="Categorie_log">photo de profil</h3>
+                <input class="Input_log" type="file" name="profilimg" required>
+                <input type="submit" name="hello2">
+                </form>
+
                 <form  method="post">
                 <h3 id="Log_mail" class="Categorie_log">Nom</h3>
-                <input type="text" name="title" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_name']?>" required>
+                <input type="text" name="title" class="Input_log"  placeholder="<?=$ok['comp_name']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Adresse mail</h3>
-                <input type="email" name="username" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_email']?>" required>
+                <input type="email" name="username" class="Input_log" placeholder="<?=$ok['comp_email']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Telephone</h3>
-                <input type="number" name="phone" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_phone']?>" >
+                <input type="number" name="phone" class="Input_log" placeholder="<?=$ok['comp_phone']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Site web</h3>
-                <input type="url" name="website" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_website']?>">
+                <input type="url" name="website" class="Input_log"  placeholder="<?=$ok['comp_website']?>">
                 <h3 id="Log_mail" class="Categorie_log">description</h3>
-                <input type="text" name="desc" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_desc']?>" required>
+                <input type="text" name="desc" class="Input_log"  placeholder="<?=$ok['comp_desc']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Adresse : Num</h3>
-                <input type="number" name="ad_nb" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_adress_nb']?>" required>
+                <input type="number" name="ad_nb" class="Input_log"  placeholder="<?=$ok['comp_adress_nb']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Adresse : Ext</h3>
-                <input type="text" name="ad_ext" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_adress_ext']?>" required>
+                <input type="text" name="ad_ext" class="Input_log"  placeholder="<?=$ok['comp_adress_ext']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Adresse : libélé</h3>
-                <input type="text" name="ad_lb" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_adress_name']?>" required>
+                <input type="text" name="ad_lb" class="Input_log"  placeholder="<?=$ok['comp_adress_name']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Adresse : CP</h3>
-                <input type="number" name="ad_cp" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_adress_cp']?>" required>
+                <input type="number" name="ad_cp" class="Input_log"  placeholder="<?=$ok['comp_adress_cp']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Adresse : Ville</h3>
-                <input type="text" name="ad_city" class="Input_log" id="Input_mail" placeholder="<?=$ok['comp_adress_city']?>" required>
+                <input type="text" name="ad_city" class="Input_log"  placeholder="<?=$ok['comp_adress_city']?>" >
                 <h3 id="Log_mail" class="Categorie_log">Category</h3>
                 <select class="Input_log" name="comp_categ">
                     <option value=""><?=$ok['comp_categ']?></option>
@@ -207,7 +262,7 @@ if(!isset($_SESSION['connecte'])){
                     <option value="boulangerie">boulangerie</option>
                 </select>
                 <h3  id="Log_Pw" class="Categorie_log" >Mots de passe</h3>
-                <input type="password" name="pwd" class="Input_log" id="Input_pw" placeholder="********" required><br>
+                <input type="password" name="pwd" class="Input_log"  placeholder="********" ><br>
                 <button type="submit" name="content_ad" class="Validation_connexion_Artisan" >Valider</button>
     </form>
     <button id="edit_e_a" type="submit" name="content_edit_p" class="Validation_connexion_Artisan2" >Annuler</button>

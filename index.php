@@ -13,7 +13,7 @@
     <!-- <script src="index.js" defer></script> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
-
+<body>
 <header class="headbar">
     <button class="ubtn" class="add-button"><span class="material-symbols-outlined">download</span></button>
     <img src="./data/lba/logo.png" width="100px" alt="logo">
@@ -47,7 +47,7 @@
     </script>
 </header>
 
-<body>
+
     <!-- FEED -->
     <section class="today" id="stoday">
         <?php include('feed.php'); ?>
@@ -75,7 +75,6 @@
         <video src=""></video>
     </section>
 
-</body>
 
 <footer>
     <nav class="navbar">
@@ -134,6 +133,8 @@
             s1.style.display = "none";
             s3.style.animation = "moveToRight 0.5s ease-in-out"
         })
+
+        if(bt4){
         bt4.addEventListener("click", () => {
             s3.style.display = "block";
             bt3.style.boxShadow = "0px -5px 0px 0px orange"
@@ -145,7 +146,7 @@
             s2.style.display = "none";
             s1.style.display = "none";
             s3.style.animation = "moveToRight 0.5s ease-in-out"
-        })
+        })}
     </script>
 </footer>
 <!-- <script>
@@ -157,4 +158,5 @@
         }
     </script> -->
 
+    </body>
 </html>

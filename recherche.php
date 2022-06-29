@@ -20,47 +20,22 @@ if(isset($_GET['research']) AND !empty($_GET['research'])){
 <body>
     <!-- Logo -->
     <form method="GET">
-    <input type="search" id="searchbar" placeholder="Recherche"><br>
+    <input type="search" name="research" id="searchbar" placeholder="Recherche"><br>
     <div id="trait_dessus"></div>
     <ul id="menu">
         <li id="distance"><a>Distance</a>
             <ul>
-                <li>
-                    <a href="recherche?=e.php">
-                       <div>
-                           <button type="button" class="boutton_recherche">0-100m</button>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a value="100-300m">
-                        <div>
-                           <button type="button" class="boutton_recherche">100-300m</button>
-                        </div>
-                    </a>
-                </li>
-                <li><a value ="300-500m">
-                        <div>
-                           <button type="button" class="boutton_recherche">300-500m</button>
-                        </div>
-                    </a>
-                </li>
+                <li><a value="0-100m">0-100m</a></li>
+                <li><a value="100-300m">100-300m</a></li>
+                <li><a value ="300-500m">300-500m</a></li>
+                <li><a value ="300-500m">300-500m</a></li>
             </ul>
         </li>  
         <li id="theme"><a>Theme</a>
             <ul>
-                <li><a value="degustation">
-                        <div>
-                           <button type="button" class="boutton_recherche">Degustation</button>
-                        </div>
-                    </a>
-                </li>
-                <li><a value="promotion">
-                        <div>
-                           <button type="button" class="boutton_recherche">Promotion</button>
-                        </div>
-                    </a>
-                </li>
+                <li><a value="degustation">Degustation</a></li>
+                <li><a value="promotion">Promotion</a></li>
+                <li><a value="promotion">Promotion</a></li>
             </ul>
         </li>
     </ul>
@@ -73,16 +48,19 @@ if(isset($_GET['research']) AND !empty($_GET['research'])){
 
 
     <section class="afficher_membres">
+
         <?php
             if($allmembers->rowCount() > 0){
                 while($member = $allmembers->fetch()){
                     ?>
-                    <p><?= $member['comp_name'];?></p>
-                    <p><?= $member['comp_adress_nb'];?></p>
-                    <p><?= $member['comp_adress_ext'];?></p>
-                    <p><?= $member['comp_adress_name'];?></p>
 
-
+  <div class="suggestions_artisan">
+            <div class="pdp2"></div>
+            <div class="info_artisan">
+                <div class="name2"><?= $member['comp_name'];?></div>
+                <div class="adresse2"><?= $member['comp_adress_nb']?> <?= $member['comp_adress_ext']?> <?= $member['comp_adress_name']?></div>
+            </div>
+        </div>
                     <?php
                 }
             }

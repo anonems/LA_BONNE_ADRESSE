@@ -1,6 +1,6 @@
 <?php
 if(!isset($_SESSION['connecte'])){ 
-    header("Location :index.php");
+    header("Location:index.php");
 }elseif($_SESSION['connecte']==True){
     if ($_SESSION['mode']=="user" ){
         $username = filter_input(INPUT_POST, "username");
@@ -11,6 +11,8 @@ if(!isset($_SESSION['connecte'])){
         ]);
         $maRequete->setFetchMode(PDO::FETCH_ASSOC);
         $log = $maRequete->fetch();
+        $maRequete3 = $pdo->prepare("SELECT MAX(comp_id) FROM comp_infos");
+        $maRequete3->execute();
         if(($_SERVER["REQUEST_METHOD"] == "POST") && (isset($_POST['content_ad']))) {
             $title = filter_input(INPUT_POST, "title");
             $username = filter_input(INPUT_POST, "username");
@@ -25,13 +27,18 @@ if(!isset($_SESSION['connecte'])){
             $comp_categ = filter_input(INPUT_POST, "comp_categ");
             $pwd = filter_input(INPUT_POST, "pwd");
             $pwd_hash =  password_hash($pwd, PASSWORD_DEFAULT);
+
+            $maRequete3 = $pdo->prepare("SELECT MAX(comp_id) AS max_id FROM comp_infos");
+            $maRequete3->execute();
+            $invNum = $maRequete3 -> fetch(PDO::FETCH_ASSOC);
+            $max_id = $invNum['max_id']+1;
             
+            mkdir('data/comp/'.$max_id.'');
+
             $maRequete2 = $pdo->prepare("SELECT user_email,comp_email FROM user_infos,comp_infos WHERE user_infos.user_email = :id_user OR comp_infos.comp_email = :id_user ");
             $maRequete2->execute(['id_user' => $username]);
             $verifuse = $maRequete2->fetch(); 
             if (!$verifuse){
-                $nb_id = $pdo->prepare("SELECT COUNT(comp_id) FROM comp_infos");
-                $nb_id->execute();
                 $maRequete = $pdo->prepare("INSERT INTO comp_infos (comp_name,comp_email,comp_phone,comp_website,comp_desc,comp_adress_nb,comp_adress_ext,comp_adress_name,comp_adress_cp,comp_adress_city,comp_pwd,comp_categ) VALUES (:title,:username,:phone,:website,:descr,:ad_nb,:ad_ext,:ad_lb,:ad_cp,:ad_city,:pwd,:comp_categ) ");
                 $maRequete->execute(array(
                     'title' => $title,
@@ -47,7 +54,6 @@ if(!isset($_SESSION['connecte'])){
                     'username' => $username,
                     'pwd' => $pwd_hash        
                 ));
-                mkdir('data/comp/'.$nb_id.'');
             }elseif($verifuse){
                 echo "<span style='color:red'>Cette email est déja disponnible veuillez en utiliser un autre.</span>";
             }
@@ -114,25 +120,25 @@ if(!isset($_SESSION['connecte'])){
                 <h1 class="Title_connection_Artisan">Ma bonne Adresse</h1>
                 <form  method="post">
                 <h3 id="Log_mail" class="Categorie_log">Nom</h3>
-                <input type="text" name="title" class="Input_log" id="Input_mail" placeholder="Nom" required>
+                <input type="text" name="title" class="Input_log"  placeholder="Nom" required>
                 <h3 id="Log_mail" class="Categorie_log">Adresse mail</h3>
-                <input type="email" name="username" class="Input_log" id="Input_mail" placeholder="email@lba.fr" required>
+                <input type="email" name="username" class="Input_log"  placeholder="email@lba.fr" required>
                 <h3 id="Log_mail" class="Categorie_log">Telephone</h3>
-                <input type="number" name="phone" class="Input_log" id="Input_mail" placeholder="Phone" >
+                <input type="number" name="phone" class="Input_log"  placeholder="Phone" >
                 <h3 id="Log_mail" class="Categorie_log">Site web</h3>
-                <input type="url" name="website" class="Input_log" id="Input_mail" placeholder="lba.fr">
+                <input type="url" name="website" class="Input_log"  placeholder="lba.fr">
                 <h3 id="Log_mail" class="Categorie_log">description</h3>
-                <input type="text" name="desc" class="Input_log" id="Input_mail" placeholder="On vend des fleurs" required>
+                <input type="text" name="desc" class="Input_log"  placeholder="On vend des fleurs" required>
                 <h3 id="Log_mail" class="Categorie_log">Adresse : Num</h3>
-                <input type="number" name="ad_nb" class="Input_log" id="Input_mail" placeholder="27" required>
+                <input type="number" name="ad_nb" class="Input_log"  placeholder="27" required>
                 <h3 id="Log_mail" class="Categorie_log">Adresse : Ext</h3>
-                <input type="text" name="ad_ext" class="Input_log" id="Input_mail" placeholder="Rue" required>
+                <input type="text" name="ad_ext" class="Input_log"  placeholder="Rue" required>
                 <h3 id="Log_mail" class="Categorie_log">Adresse : libélé</h3>
-                <input type="text" name="ad_lb" class="Input_log" id="Input_mail" placeholder="Du Progrès" required>
+                <input type="text" name="ad_lb" class="Input_log"  placeholder="Du Progrès" required>
                 <h3 id="Log_mail" class="Categorie_log">Adresse : CP</h3>
-                <input type="number" name="ad_cp" class="Input_log" id="Input_mail" placeholder="93100" required>
+                <input type="number" name="ad_cp" class="Input_log"  placeholder="93100" required>
                 <h3 id="Log_mail" class="Categorie_log">Adresse : Ville</h3>
-                <input type="text" name="ad_city" class="Input_log" id="Input_mail" placeholder="Montreuil" required>
+                <input type="text" name="ad_city" class="Input_log"  placeholder="Montreuil" required>
                 <h3 id="Log_mail" class="Categorie_log">Category</h3>
                 <select class="Input_log" name="comp_categ">
                     <option value="">faire un choix</option>
@@ -143,7 +149,7 @@ if(!isset($_SESSION['connecte'])){
                     <option value="boulangerie">boulangerie</option>
                 </select>
                 <h3  id="Log_Pw" class="Categorie_log" >Mots de passe</h3>
-                <input type="password" name="pwd" class="Input_log" id="Input_pw" placeholder="********" required><br>
+                <input type="password" name="pwd" class="Input_log"  placeholder="********" required><br>
                 <button type="submit" name="content_ad" class="Validation_connexion_Artisan" >Valider</button>
     </form>
     <button id="add_e_a" type="submit" name="content_log" class="Validation_connexion_Artisan2" >Annuler</button>
