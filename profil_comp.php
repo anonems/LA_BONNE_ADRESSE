@@ -103,7 +103,6 @@ if(!isset($_SESSION['connecte'])){
         // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES["profilimg"]["tmp_name"], $newimgname)) {
-                header('Location: hello3.php');    
             //echo "The file ". htmlspecialchars( basename( $_FILES["profilimg"]["name"])). " has been uploaded.";
             } else {
             echo "Sorry, there was an error uploading your file.";
@@ -225,7 +224,7 @@ if(!isset($_SESSION['connecte'])){
 <div class="log_div_class"  >
                 <h1 class="Title_connection_Artisan">Edit profil</h1>
 
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                 <h3 id="Log_mail" class="Categorie_log">photo de profil</h3>
                 <input class="Input_log" type="file" name="profilimg" required>
                 <input type="submit" name="hello2">
