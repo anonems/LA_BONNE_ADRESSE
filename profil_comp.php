@@ -114,7 +114,7 @@ if(!isset($_SESSION['connecte'])){
 <link rel="stylesheet" href="css/style.css">
 <div class="cp" >
     <span style="display:flex; align-items:center">
-        <img class="profil__img" src="data/comp/<?=$_SESSION['username']?>/profilimg.png" alt="image_entreprise">
+        <img class="profil__img" src="data/comp/<?=$ok['comp_id']?>/profilimg.png" alt="image_entreprise">
         <b style=" font-size:20px; margin-left:10px"><?=$ok['comp_name']?></b>
     </span>
     <?php if($co_comp==true ){ ?>

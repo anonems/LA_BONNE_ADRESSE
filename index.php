@@ -72,7 +72,6 @@
                 }
             }
         ?>
-        <video src=""></video>
     </section>
 
 
